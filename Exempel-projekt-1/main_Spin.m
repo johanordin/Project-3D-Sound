@@ -9,10 +9,10 @@
 clear all;
 close all;
  
-filename = 'click';
+filename = 'clock';
  
 [x fs nbits] = wavread(filename);
  
-y = spin ([x' x' x' x']', fs, 10, 1, 'model');
+y = spin ([x' x' x' x']', fs, 1, 5, 'kemar');
  
 wavwrite(y, fs, nbits, strcat(filename, '_spin'));

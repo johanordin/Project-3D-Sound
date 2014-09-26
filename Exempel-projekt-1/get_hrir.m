@@ -47,7 +47,9 @@ end
 % (*=phi in min digits; &&& = three digit phi, zero padded)
  
 filename = strcat( 'hrirs\H', int2str(elevations(elev_match)) );
+filename
 filename = strcat( filename, 'e');
+
  
 tempstr = int2str(theta_match);
 needed_zeros = 3-length(tempstr);
@@ -58,8 +60,9 @@ if (needed_zeros > 0)
 end
  
 filename = strcat( filename, tempstr );
+
 filename = strcat( filename, 'a.wav');
- 
+filename
 % now read file with 'filename' into memory
 [x fs nbits] = wavread(filename);
  
