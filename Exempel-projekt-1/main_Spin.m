@@ -9,7 +9,10 @@
 clear all;
 close all;
  
-filename = 'clock';
+%filename = 'clock';
+%filename = 'bikehorn';
+%filename = 'cow';
+filename = 'yodelay';
  
 [x fs nbits] = wavread(filename);
 
