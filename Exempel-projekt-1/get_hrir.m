@@ -65,7 +65,7 @@ if (needed_zeros > 0)
 end
 
 
-filename = strcat( filename, tempstr )
+filename = strcat( filename, tempstr );
 filename = strcat( filename, 'a.wav');
 
 while exist(filename, 'file') ~= 2
@@ -80,7 +80,7 @@ while exist(filename, 'file') ~= 2
         end
     end
     
-    filename = strcat( filename, tempstr )
+    filename = strcat( filename, tempstr );
     filename = strcat( filename, 'a.wav');
 end
 
