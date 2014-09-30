@@ -19,7 +19,7 @@ function y = spin (x, fs, theta_period, phi_period, hrtfMode)
 % set constants
 %theta_rotation_period = period;         %rotation around the head in seconds
 %phi_rotation_period = 10;               %elevation change (up/down) in seconds
-N_theta = 10;                           %number of blocks per rotation
+N_theta = 20;                           %number of blocks per rotation
 %N_phi = N_theta;                        %number of blocks per rotation
  
 %calculate the block size

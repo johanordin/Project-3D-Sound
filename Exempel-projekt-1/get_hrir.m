@@ -65,8 +65,10 @@ if (needed_zeros > 0)
 end
 
 
-filename = strcat( filename, tempstr )
+filename = strcat( filename, tempstr );
 filename = strcat( filename, 'a.wav');
+
+disp(filename);
 
 while exist(filename, 'file') ~= 2
     filename = temp;
@@ -80,11 +82,14 @@ while exist(filename, 'file') ~= 2
         end
     end
     
-    filename = strcat( filename, tempstr )
+    filename = strcat( filename, tempstr );
     filename = strcat( filename, 'a.wav');
+    %disp('--inside the loop');
+    %disp(strcat('   ', filename));
 end
 
 
+disp(filename);
 % now read file with 'filename' into memory
 [x fs nbits] = wavread(filename);
  

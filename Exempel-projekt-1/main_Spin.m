@@ -13,6 +13,6 @@ filename = 'clock';
  
 [x fs nbits] = wavread(filename);
 
-y = spin ([x' x' x' x']', fs, 5, 1, 'kemar');
+y = spin ([x' x' x' x']', fs, 1, 10, 'kemar');
  
 wavwrite(y, fs, nbits, strcat(filename, '_spin'));
