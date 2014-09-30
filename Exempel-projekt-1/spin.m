@@ -19,7 +19,7 @@ function y = spin (x, fs, theta_period, phi_period, hrtfMode)
 % set constants
 %theta_rotation_period = period;         %rotation around the head in seconds
 %phi_rotation_period = 10;               %elevation change (up/down) in seconds
-N_theta = 20;                           %number of blocks per rotation
+N_theta = 40;                           %number of blocks per rotation
 %N_phi = N_theta;                        %number of blocks per rotation
  
 %calculate the block size
@@ -31,8 +31,12 @@ N_phi = fs*phi_period/samples_per_block; %blocks per rotation
 %create the vector of angles to be run through during the rotation period
 thetas = 360*linspace(0, (N_theta-1)/N_theta,N_theta) - 180;
 
-phis = 180*linspace(0,(N_phi-1)/N_phi,N_phi)-90;
+disp(thetas);
+
+%phis = 180*linspace(0,(N_phi-1)/N_phi,N_phi)-90;
+ phis = zeros(1,20);
  
+
 %initialize y
 y=[];
  
@@ -48,6 +52,11 @@ for block_num = 1:floor(length(x)/samples_per_block)
     
     %calc block length
     blockLength = min([samples_per_block (length(x) - block_num*samples_per_block)]);
+    
+    %%%%
+    thetas((I_theta));
+    disp(phis(I_phi));
+    
     
     %apply hrtf to this block for this theta and phi
     filtered_block = hrtf(x(blockStart:blockStart+blockLength-1), fs, thetas(I_theta), phis(I_phi), hrtfMode);

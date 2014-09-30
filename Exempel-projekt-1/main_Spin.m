@@ -11,11 +11,11 @@ close all;
  
 %filename = 'clock';
 %filename = 'bikehorn';
-%filename = 'cow';
-filename = 'yodelay';
+filename = 'cow';
+%filename = 'yodelay';
  
 [x fs nbits] = wavread(filename);
 
-y = spin ([x' x' x' x']', fs, 1, 10, 'kemar');
+y = spin ([x' x' x' x']', fs, 10, 2, 'kemar');
  
 wavwrite(y, fs, nbits, strcat(filename, '_spin'));
