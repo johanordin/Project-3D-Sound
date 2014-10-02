@@ -17,26 +17,18 @@
 function y = spin (x, fs, theta_period, phi_period, hrtfMode)
  
 % set constants
-%theta_rotation_period = period;         %rotation around the head in seconds
-%phi_rotation_period = 10;               %elevation change (up/down) in seconds
-N_theta = 40;                           %number of blocks per rotation
-%N_phi = N_theta;                        %number of blocks per rotation
+%theta_rotation_period = period;         %rotation around the head in
+theta_period = 10;
+N_theta = 100;                           %number of blocks per rotation
  
 %calculate the block size
 samples_per_block = fs*theta_period/N_theta;
  
-%Now we can calc blocks/rotation for phi with fixed block size
-N_phi = fs*phi_period/samples_per_block; %blocks per rotation
- 
 %create the vector of angles to be run through during the rotation period
 thetas = 360*linspace(0, (N_theta-1)/N_theta,N_theta) - 180;
 
-disp(thetas);
-
-%phis = 180*linspace(0,(N_phi-1)/N_phi,N_phi)-90;
- phis = zeros(1,20);
+phis = zeros(1,length(thetas));
  
-
 %initialize y
 y=[];
  
@@ -48,24 +40,25 @@ for block_num = 1:floor(length(x)/samples_per_block)
     
     %determine theta and phi indeces
     I_theta = 1+mod(block_num, N_theta);
-    I_phi = 1+mod(block_num, N_phi);        %round((N_phi+1)/2);
     
     %calc block length
     blockLength = min([samples_per_block (length(x) - block_num*samples_per_block)]);
     
     %%%%
     thetas((I_theta));
-    disp(phis(I_phi));
-    
+    %%disp(phis(I_phi));
+    disp(thetas((I_theta)));
     
     %apply hrtf to this block for this theta and phi
-    filtered_block = hrtf(x(blockStart:blockStart+blockLength-1), fs, thetas(I_theta), phis(I_phi), hrtfMode);
+    filtered_block = hrtf(x(blockStart:blockStart+blockLength-1), fs, thetas(I_theta), phis(I_theta), hrtfMode);
+    
     
     %crossfade in new filtered block to match previous overrun (don't do on first iteration)
     if block_num ~= 1
-        cross_up = linspace(0,1,overrun_length);
+        cross_up = linspace(0 ,1 ,overrun_length);
         filtered_block(1:overrun_length) = filtered_block(1:overrun_length).*cross_up;
     end
+    
     
     % get sizes of vectors
     y_size = size(y);
