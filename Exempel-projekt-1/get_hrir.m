@@ -56,7 +56,7 @@ end
  
 %disp(int2str(elevations(elev_match)));
 
-filename = strcat( 'hrirs2\H', int2str(elevations(elev_match)) );
+filename = strcat( 'hrirs\H', int2str(elevations(elev_match)) );
 filename = strcat( filename, 'e');
 
 
@@ -75,7 +75,7 @@ end
 filename = strcat( filename, tempstr );
 filename = strcat( filename, 'a.wav');
 
-%disp(filename);
+
 
 while exist(filename, 'file') ~= 2
     filename = temp;
@@ -91,8 +91,6 @@ while exist(filename, 'file') ~= 2
     
     filename = strcat( filename, tempstr );
     filename = strcat( filename, 'a.wav');
-    %disp('--inside the loop');
-    %disp(strcat('   ', filename));
 end
 
 
@@ -105,7 +103,12 @@ disp(filename);
 % but we can use these for left by swapping the l/r hrirs for the
 % absolute value of theta (ie left HRTF is same as right HRTF but
 % swapping stereo tracks)
+
+
+disp(size(x));
 h = zeros(size(x));
+disp(theta);
+
 if (theta < 0)
     h(:,1) = x(:,2);
     h(:,2) = x(:,1);
