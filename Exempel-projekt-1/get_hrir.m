@@ -21,9 +21,6 @@ elevations = [-40 -30 -20 -10 0 10 20 30 40 50 60 70 80 90];
 
 % theta_increments: spacing between thetas for corresponding phi
 theta_increments = [6.5 6 5 5 5 5 5 6 6.5 8 10 15 30 360];
-
-%theta_increments = [5 5 50 5 5 5 5 5 5 5 10 15 30 360];
-
  
 % Determine which phi is best match based on search of
 % values in elevations; record the index
@@ -38,6 +35,7 @@ for I = 1:length(elevations)
     end
 end
  
+
 % Calculate best theta match knowing the linear spacing
 % between each theta
 num_incr = round(abs(theta)/theta_increments(elev_match));
@@ -58,7 +56,6 @@ end
 
 filename = strcat( 'hrirs\H', int2str(elevations(elev_match)) );
 filename = strcat( filename, 'e');
-
 
 temp = filename;
 
@@ -92,7 +89,6 @@ while exist(filename, 'file') ~= 2
     filename = strcat( filename, tempstr );
     filename = strcat( filename, 'a.wav');
 end
-
 
 disp(filename);
 % now read file with 'filename' into memory

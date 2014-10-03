@@ -9,12 +9,15 @@
 clear all;
 close all;
  
-%filename = 'clock';
-%filename = 'bikehorn';
+%filename = 'Sounds\clock';
+%filename = 'Sounds\bikehorn';
 filename = 'Sounds\cow';
-%filename = 'yodelay';
+%filename = 'Sounds\yodelay';
  
 [x fs nbits] = wavread(filename);
+
+disp(size(x));
+%pause(5)
 
 %% model
 % y = spin ([x' x' x' x']', fs, 10, 2, 'model');
@@ -22,7 +25,9 @@ filename = 'Sounds\cow';
 % wavwrite(y, fs, nbits, strcat(filename, '_spin_model'));
 
 %% kemar
-
-y = spin ([x' x' x' x']', fs, 10, 2, 'kemar');
+% Gör på ljud
+y = spin ( x, fs, 10, 2, 'kemar');
+% Gör på 4x orginalljudet
+%y = spin ([x' x' x' x']', fs, 10, 2, 'kemar');
  
 wavwrite(y, fs, nbits, strcat(filename, '_spin_kemar'));
