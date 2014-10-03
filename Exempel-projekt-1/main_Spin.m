@@ -16,7 +16,7 @@ filename = 'Sounds\cow';
  
 [x fs nbits] = wavread(filename);
 
-disp(size(x));
+%disp(size(x));
 %pause(5)
 
 %% model
@@ -26,7 +26,7 @@ disp(size(x));
 
 %% kemar
 % Gör på ljud
-y = spin ( x, fs, 10, 2, 'kemar');
+y = spin ( x, fs, 10, 'kemar');
 % Gör på 4x orginalljudet
 %y = spin ([x' x' x' x']', fs, 10, 2, 'kemar');
  
