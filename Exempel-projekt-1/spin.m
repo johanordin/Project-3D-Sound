@@ -32,7 +32,6 @@ thetas = 360*linspace(0, (N_theta-1)/N_theta,N_theta) - 180;
 
 fprintf('Length of the vector\t\t\t: %i\n', length(thetas));
 fprintf('The vector of angles\t\t\t: %f\n', thetas);
-%pause(10)
 
 phis = zeros(1,length(thetas));
  
